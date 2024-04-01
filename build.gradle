@@ -11,13 +11,37 @@ java {
 	sourceCompatibility = '17'
 }
 
+
+//lombok 설정 추가 시작
+configurations {
+compileOnly {
+	extendsFrom annotationProcessor
+} }
+//lombok 설정 추가 끝
+
+
+
+
 repositories {
 	mavenCentral()
 }
 
 dependencies {
+	//롬복
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testCompileOnly 'org.projectlombok:lombok'
+	testAnnotationProcessor 'org.projectlombok:lombok'
+	//끝
+
+
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'jakarta.inject:jakarta.inject-api:2.0.1'
 	implementation 'org.springframework.boot:spring-boot-starter'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+
+
 }
 
 tasks.named('test') {
